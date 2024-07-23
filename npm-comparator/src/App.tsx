@@ -1,20 +1,50 @@
-import { useState } from 'react'
-import Header from './components/header'
-import SearchBar from './components/search'
+import Header from "./components/header";
+import SearchBar from "./components/search";
+// import DataFetcher from './components/fetchData'
+import Comparison from "./components/comparison";
+import Graph from "./components/graph";
+import Result from "./components/result";
+import { useState } from "react";
+
 // import './App.css'
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [selectedOption1, setSelectedOption1] = useState("");
+  const [selectedOption2, setSelectedOption2] = useState("");
+
+  const handleCompare = (option1: string, option2: string) => {
+    setLoading(false);
+    setSelectedOption1(option1);
+    setSelectedOption2(option2);
+  };
+
+  // console.log(selectedOption1);
+  // console.log(selectedOption2);
 
   return (
-    <div style = {{
-      display: "flex",
-      flexDirection: "column"
-    }}>
-    <Header/>
-    <SearchBar></SearchBar>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Header />
+      <SearchBar onCompare={handleCompare}></SearchBar>
+      {loading ? (
+        <></>
+      ) : (
+        <>
+          <Comparison selectedOption1={selectedOption1} selectedOption2={selectedOption2}></Comparison>
+          <Graph></Graph>
+          <Result></Result>
+        </>
+      )}
+
+      <div className="footer">Copyright ©2023 Emumba Inc.</div>
+      {/* <DataFetcher query = 'react'></DataFetcher> */}
     </div>
-    
-  )
+  );
 }
 
-export default App
+export default App;

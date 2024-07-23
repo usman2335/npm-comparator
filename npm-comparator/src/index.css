@@ -14,8 +14,39 @@ body{
 .ant-select .ant-select-selector {
   border-radius:0px;
 }
+.anticon-crown{
+  width: auto !important
+}
 /* .ant-btn{
   position: relative;
   top: 1px;
   width: 12%;
 } */
+
+.result{
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0 5%; */
+  width: 100%;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
+  margin-right: 5%;
+  align-items: center;
+}
+
+.icons{
+  margin-top: 2%;
+  display: flex;
+  gap: 10px
+}
+.footer{
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00000073;
+}

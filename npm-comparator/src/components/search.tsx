@@ -1,48 +1,122 @@
-import { SearchOutlined } from '@ant-design/icons'
-import { Button, Card, Select } from 'antd'
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Card, Select } from "antd";
+import type { SelectProps } from "antd";
+import { useState } from "react";
+import dataFetcherName from "../fetchData";
 
-const Icon = () =>
-{
-    return (<SearchOutlined/>);
+const filterOptions: string[] = [];
+
+
+interface props {
+  onCompare: (selectedOption1 : string, selectedOption2:string) => void;
 }
-const SearchBar = () => {
+
+
+
+const SearchBar = ({ onCompare }: props) => {
+
+
+  const [selectedValues, setSelectedValues] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedOption1, setSelectedOption1] = useState('');
+  const [selectedOption2, setSelectedOption2] = useState('');
+  
+  
+  const options: SelectProps["options"] = [];
+  // console.log(searchTerm);
+  const data = dataFetcherName(searchTerm);
+  // console.log(data[0]);
+  // const package1 = dataFetcherName(selectedOption1);
+  // const package2 = dataFetcherName(selectedOption2);
+  // console.log(package1[0]);
+  // console.log(package2[0]);
+  if(searchTerm !== "")
+  {
+   
+    // const firstValue = data.length > 0 ? data[0].package.name : null;
+    if(data.length >0){
+      data.forEach((item,index)=>{
+        options.push({
+          value: item.package.name
+        })
+      })
+    }
+    
+  }
+  else{
+    while(options.length > 0 || selectedValues == 1 ) 
+    {
+      options.pop();
+    }
+  }
+  
+  
+  
+ 
+  const handleChange = (value: string) => {
+    setSelectedValues(value.length);
+    setSelectedOption1(value[0]);
+    setSelectedOption2(value[1]);
+  };
+  
+  const handleCompare = () => {
+    setLoading(true);
+    setDisabled(true);
+    setTimeout(() => {   //acting as an api call
+      setLoading(false);
+      setDisabled(false);
+      onCompare(selectedOption1,selectedOption2);
+    }, 2000);
+  };
+
+  const handleSearch = (value : string) => {
+    setSearchTerm(value);
+  }
+
+
   return (
-    // <div style = {{
-    //     width: "50%",
-    //     marginLeft: "25%"
-    // }}>
     <Card
-     style = {{
+      style={{
         display: "flex",
         marginTop: "2rem",
         borderRadius: "0px",
         width: "60%",
-        margin: "3rem 20%"
-    }}>
-        <Select
-        placeholder = "Select two packages to compare"
-        style = {
-            {
-                width: "85%",
-                borderRadius: "0px"
-            }
-        }></Select>
-        <Button 
-        style = {{
-            borderRadius: "0px",
-            position: "relative",
-            top: "1px",
-            width: "12%",
-            backgroundColor: "#F5F5F5",
-            color: "#00000040"
+        margin: "3rem 20%",
+      }}
+    >
+      <Select
+        mode="multiple"
+        disabled={disabled}
+        placeholder="Select two packages to compare"
+        options={options}
+        onChange={handleChange}
+        onSearch = {handleSearch}
+        maxCount={2}
+        notFoundContent={"No results found"}
+        style={{
+          width: "85%",
+          borderRadius: "0px",
         }}
-        icon = {<SearchOutlined/>}>
-            Compare
-        </Button>
-
+      ></Select>
+      <Button
+        type="primary"
+        disabled={selectedValues != 2}
+        onClick={handleCompare}
+        loading={loading}
+        style={{
+          borderRadius: "0px",
+          position: "relative",
+          top: "1px",
+          width: "12%",
+        }}
+        icon={<SearchOutlined />}
+      >
+        Compare
+      </Button>
     </Card>
-    // </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

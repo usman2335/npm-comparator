@@ -13,8 +13,8 @@ const Header = () => {
 
         }}>
         <HomeFilled />
-            <h3>NPM Package Comparator</h3>
-            <Typography.Text type = "secondary"> Compare & Recommend the best NPM package</Typography.Text>
+        <h3>NPM Package Comparator</h3>
+        <Typography.Text type = "secondary"> Compare & Recommend the best NPM package</Typography.Text>
             
         </Space>
 
