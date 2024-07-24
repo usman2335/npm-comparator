@@ -2,6 +2,7 @@ import { Card, Table } from 'antd'
 import type { TableProps } from 'antd'
 import React from 'react'
 import dataFetcherName from '../fetchData';
+import { dataFetcherPackage } from '../fetchData';
 
 
 interface Props {
@@ -42,57 +43,70 @@ const Comparison = ({selectedOption1, selectedOption2} : Props) => {
 
 ]
 
-const data: DataType[] = [
-    {
-      key: 'Description',
-      description1: 'Hooks for managing, caching, and syncing asynchronous and remote data',
-      description2: 'React Hooks library for remote data fetching',
-    },
-    {
-     key: 'Keywords',
-     description1: 'N/A',
-     description2: 'N/A'
-    },
-    {
-     key: 'Repository',
-     description1: 'HomePage Bugs Github',
-     description2: 'HomePage Bugs Github'
-    },
-    {
-     key: 'License',
-     description1: 'MIT',
-     description2: 'MIT'
-    },
-    {
-     key: 'Last Modification Date',
-     description1: 'A month ago',
-     description2: 'A month ago'
-    },
-    {
-     key: 'Authors/Publishers',
-     description1: 'tannerlinsely',
-     description2: 'N/A'
-    },
-    {
-     key: 'data',
-     description1: 'tannerlinsley@gmail.com',
-     description2: 'aaron.brown@vercel.com'
-    }
-    ]
 
 
-  console.log(selectedOption2);
-  console.log(selectedOption1);
-  const data1 = dataFetcherName(selectedOption1);
-  const data2 = dataFetcherName(selectedOption2);
-  if(data1.length >0 && data2.length >0)
+
+  // console.log(selectedOption2);
+  // console.log(selectedOption1);
+  let data1: any = [];
+  let data2: any = [];
+  let data : DataType[] = [];
+  if(data1.length == 0 || data2.length == 0)
   {
-    columns[1].title = data1[0].package.name;
-    columns[2].title = data2[0].package.name;
+    data1= dataFetcherPackage(selectedOption1);
+    data2 = dataFetcherPackage(selectedOption2);
+    
+  }
+  
+   if(data1.length >0 && data2.length >0)
+   {
+    // console.log(data2[0].maintainers);
+    // console.log(data1[0].license);
+    // console.log(data1[0].maintainers);
+    columns[1].title = data1[0].name + ` (${data1[0].version})`;
+    columns[2].title = data2[0].name+ ` (${data2[0].version})`;
+    data = [
+      {
+        key: 'Description',
+        description1:  data1[0].description,
+        description2:  data2[0].description,
+      },
+      {
+       key: 'Keywords',
+       description1:  data1[0].keywords != undefined ? data1[0].keywords : 'N/A',
+       description2:  data2[0].keywords != undefined ? data1[0].keywords : 'N/A',
+      },
+      {
+       key: 'Repository',
+       description1: 'HomePage Bugs Github',
+       description2: 'HomePage Bugs Github'
+      },
+      {
+       key: 'License',
+       description1: data1[0].license,
+       description2: 'MIT'
+      },
+      {
+       key: 'Last Modification Date',
+       description1:  data1[0].date,
+       description2:  data2[0].date,
+      },
+      {
+       key: 'Authors/Publishers',
+       description1:  data1[0].author != undefined ? data1[0].author.name : 'N/A',
+       description2:  data2[0].author != undefined ? data2[0].author.name : 'N/A',
+      },
+      {
+       key: 'Maintainers',
+       description1:  data1[0].maintainers != "" ? data1[0].maintainers[0].email : 'N/A',
+       description2:  data2[0].maintainers != "" ? data2[0].maintainers[0].email : 'N/A',
+      }
+      ]
 
     // columns[1].dataIndex
   }
-
+  
+  
   
   return (
     <Card

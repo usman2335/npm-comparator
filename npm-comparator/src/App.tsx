@@ -36,8 +36,8 @@ function App() {
       ) : (
         <>
           <Comparison selectedOption1={selectedOption1} selectedOption2={selectedOption2}></Comparison>
-          <Graph></Graph>
-          <Result></Result>
+          <Graph selectedOption1={selectedOption1} selectedOption2={selectedOption2}></Graph>
+          <Result selectedOption1={selectedOption1} selectedOption2={selectedOption2}></Result>
         </>
       )}
 
