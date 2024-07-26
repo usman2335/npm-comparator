@@ -51,7 +51,7 @@ interface Package2 {
   tests: number,
   carefulness:number;
   health:number;
-  stars:number;
+  stars?:number;
 }
 
 const apiURL = `https://api.npms.io/v2/search?q=`;
