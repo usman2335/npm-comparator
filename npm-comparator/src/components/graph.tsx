@@ -34,8 +34,8 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
     package2Data = data2[0].downloads;
     const labels = [
       ...new Set([
-        ...package1Data.map((data) => data.from),
-        ...package2Data.map((data) => data.from),
+        ...package1Data.map((data) => (data.from).slice(0,10)),
+        ...package2Data.map((data) => (data.from).slice(0,10)),
       ]),
     ].sort();
     const data = {
@@ -44,7 +44,7 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
         {
           label: data1[0].name,
           data: labels.map((label) => {
-            const entry = package1Data.find((item) => item.from === label);
+            const entry = package1Data.find((item) => (item.from).slice(0,10) === label);
             return entry ? entry.count : 0;
           }),
           borderColor: '#33D633',
@@ -55,7 +55,7 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
         {
           label: data2[0].name,
           data: labels.map((label) => {
-            const entry = package2Data.find((item) => item.from === label);
+            const entry = package2Data.find((item) => (item.from).slice(0,10) === label);
             return entry ? entry.count : 0;
           }),
           borderColor: '#0A78FF',
@@ -90,6 +90,12 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
             text: 'Downloads',
           },
           beginAtZero: true,
+          ticks: {
+            // Configure the number of ticks
+            // stepSize: Math.ceil(Math.max(...data.datasets[0].data) / 5), // Adjust step size to control tick frequency
+            // Or set maxTicksLimit to limit the number of ticks
+            maxTicksLimit: 3,
+          },
         },
       },
     };
