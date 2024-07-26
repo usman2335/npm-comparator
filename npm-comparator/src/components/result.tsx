@@ -1,6 +1,5 @@
-import { CrownOutlined, DockerOutlined, FileTextOutlined, InfoCircleOutlined } from "@ant-design/icons";
+import { CrownOutlined, FileTextOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import { Card, Statistic, Tag } from "antd";
-import React from "react";
 import { dataFetcherPackage } from "../fetchData";
 import numeral from 'numeral'
 interface Props {

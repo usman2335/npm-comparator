@@ -1,7 +1,6 @@
 import { Card, Table, Tag } from "antd";
 import type { TableProps } from "antd";
 import React from "react";
-import dataFetcherName from "../fetchData";
 import { dataFetcherPackage } from "../fetchData";
 
 interface Props {

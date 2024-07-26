@@ -4,9 +4,6 @@ import type { SelectProps } from "antd";
 import { useState } from "react";
 import dataFetcherName from "../fetchData";
 
-const filterOptions: string[] = [];
-
-
 interface props {
   onCompare: (selectedOption1 : string, selectedOption2:string) => void;
 }
@@ -30,7 +27,7 @@ const SearchBar = ({ onCompare }: props) => {
   {
    
     if(data.length >0){
-      data.forEach((item,index)=>{
+      data.forEach((item)=>{
         options.push({
           value: item.package.name
         })

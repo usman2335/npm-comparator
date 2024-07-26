@@ -1,5 +1,4 @@
 import { Card } from 'antd'
-import React from 'react'
 import { Line } from '@ant-design/plots';
 
 import { dataFetcherPackage } from '../fetchData';
@@ -19,7 +18,7 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
   let data1: any = [];
   let data2: any = [];
   let package1Data : DataType[] = [];
-  let package2Data : DataType[] = [];
+  // let package2Data : DataType[] = [];
   if(data1.length == 0 || data2.length == 0)
   {
     data1= dataFetcherPackage(selectedOption1);
@@ -29,7 +28,7 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
   if(data1.length > 0  && data2.length > 0)
   {
     package1Data = data1[0].downloads;
-    package2Data = data2[0].downloads;
+    // package2Data = data2[0].downloads;
   }
  
     
@@ -40,13 +39,13 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
         yField: 'count',
         
       };
-      const config2 = {
-        data: package2Data,
-        height: 500,
-        xField: 'from',
-        yField: 'count',
+      // const config2 = {
+      //   data: package2Data,
+      //   height: 500,
+      //   xField: 'from',
+      //   yField: 'count',
         
-      };
+      // };
   return (
     <Card
     style = {{

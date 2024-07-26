@@ -1,4 +1,3 @@
-import React from 'react'
 import {Layout, Space, Typography} from "antd"
 import { HomeFilled } from '@ant-design/icons'
 const Header = () => {
