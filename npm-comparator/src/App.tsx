@@ -1,12 +1,10 @@
 import Header from "./components/header";
 import SearchBar from "./components/search";
-// import DataFetcher from './components/fetchData'
 import Comparison from "./components/comparison";
 import Graph from "./components/graph";
 import Result from "./components/result";
 import { useState } from "react";
 
-// import './App.css'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -18,9 +16,6 @@ function App() {
     setSelectedOption1(option1);
     setSelectedOption2(option2);
   };
-
-  // console.log(selectedOption1);
-  // console.log(selectedOption2);
 
   return (
     <div
@@ -42,7 +37,6 @@ function App() {
       )}
 
       <div className="footer">Copyright ©2023 Emumba Inc.</div>
-      {/* <DataFetcher query = 'react'></DataFetcher> */}
     </div>
   );
 }

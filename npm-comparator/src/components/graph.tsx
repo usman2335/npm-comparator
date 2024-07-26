@@ -1,5 +1,5 @@
 import { Card } from 'antd'
-// import { Line } from '@ant-design/plots';
+
 
 
 import { dataFetcherPackage } from '../fetchData';
@@ -91,9 +91,6 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
           },
           beginAtZero: true,
           ticks: {
-            // Configure the number of ticks
-            // stepSize: Math.ceil(Math.max(...data.datasets[0].data) / 5), // Adjust step size to control tick frequency
-            // Or set maxTicksLimit to limit the number of ticks
             maxTicksLimit: 3,
           },
         },

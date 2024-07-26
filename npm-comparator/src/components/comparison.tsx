@@ -103,8 +103,6 @@ const Comparison = ({ selectedOption1, selectedOption2 }: Props) => {
           data2[0].maintainers != "" ? data2[0].maintainers[0].email : "N/A",
       },
     ];
-
-    // columns[1].dataIndex
   }
 
   return (
@@ -113,7 +111,6 @@ const Comparison = ({ selectedOption1, selectedOption2 }: Props) => {
         borderRadius: "0px",
         width: "60%",
         margin: "0 20%",
-        // height: "65vh"
       }}
       title="Comparison"
     >
