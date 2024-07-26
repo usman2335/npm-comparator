@@ -17,16 +17,10 @@ body{
 .anticon-crown{
   width: auto !important
 }
-/* .ant-btn{
-  position: relative;
-  top: 1px;
-  width: 12%;
-} */
 
 .result{
   display: flex;
   justify-content: space-between;
-  /* margin: 0 5%; */
   width: 100%;
 }
 
@@ -49,4 +43,10 @@ body{
   justify-content: center;
   align-items: center;
   color: #00000073;
+}
+
+.desc{
+  display: flex;
+  justify-content: center;
+  gap: 5%;
 }

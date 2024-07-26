@@ -25,17 +25,10 @@ const SearchBar = ({ onCompare }: props) => {
   
   
   const options: SelectProps["options"] = [];
-  // console.log(searchTerm);
   const data = dataFetcherName(searchTerm);
-  // console.log(data[0]);
-  // const package1 = dataFetcherName(selectedOption1);
-  // const package2 = dataFetcherName(selectedOption2);
-  // console.log(package1[0]);
-  // console.log(package2[0]);
   if(searchTerm !== "")
   {
    
-    // const firstValue = data.length > 0 ? data[0].package.name : null;
     if(data.length >0){
       data.forEach((item,index)=>{
         options.push({

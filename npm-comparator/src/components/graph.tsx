@@ -26,23 +26,22 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
     data2 = dataFetcherPackage(selectedOption2);
     
   }
-  // console.log(data1);
   if(data1.length > 0  && data2.length > 0)
   {
     package1Data = data1[0].downloads;
     package2Data = data2[0].downloads;
   }
  
-  
-    // const graphData = [
-    //     { date: '2022-11-01', value: 8000 },
-    //     { date: '2022-12-01', value: 5000 },
-    //     { date: '2023-01-01', value: 10000 },
-    //     { date: '2023-02-01', value: 11000 },
-    //   ];
     
       const config = {
         data: package1Data,
+        height: 500,
+        xField: 'from',
+        yField: 'count',
+        
+      };
+      const config2 = {
+        data: package2Data,
         height: 500,
         xField: 'from',
         yField: 'count',
@@ -56,7 +55,7 @@ const Graph = ({selectedOption1, selectedOption2} : Props) => {
         margin: "2rem 20%",
     }}
     
-    title = "Downloads"> <Line{...config} /></Card>
+    title = "Downloads"> <Line{...config}  /></Card>
   )
 }
 

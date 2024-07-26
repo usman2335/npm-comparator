@@ -86,7 +86,6 @@ const dataFetcherName = (query: string): Package[] => {
           
         }));
         setPackages(packageList);
-        // console.log("hello" +packages[0].package.name);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -135,7 +134,6 @@ const dataFetcherPackage = (query: string): Package2[] => {
 
         }];
         setPackages(packageList);
-        // console.log("hello" +packages[0].name);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

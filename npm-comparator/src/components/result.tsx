@@ -35,7 +35,6 @@ const Result = ({selectedOption1, selectedOption2} : Props) => {
     data2 = dataFetcherPackage(selectedOption2);
     
   }
-  // console.log(data1);
   if(data1.length > 0  && data2.length > 0)
   {
     score1 = ((0.2 * data1[0].communityInterest) + (0.5 * data1[0].downloadsCount) + (0.3 *(data1[0].tests+data1[0].carefulness)));
@@ -45,14 +44,12 @@ const Result = ({selectedOption1, selectedOption2} : Props) => {
     {
       timesX = score1 / score2;
       winner = data1;
-      console.log(winner)
     }
     else{
       timesX = score2/score1;
       winner = data2;
 
     }
-    // score1 = data1[0].communityInterest;
     name = winner[0].name;
     description = winner[0].description;
     repo = winner[0].links.repository;
@@ -60,9 +57,6 @@ const Result = ({selectedOption1, selectedOption2} : Props) => {
     countDownloads =winner[0].downloadsCount;
     countStars =winner[0].stars;
     countHealth=winner[0].health;
-    console.log(score1);
-    console.log(score2);
-    console.log(data1);
   }
 
   return (
